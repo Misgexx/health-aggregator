@@ -4,7 +4,6 @@ import argparse
 import json
 import sys
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
-import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -131,12 +130,6 @@ def main() -> None:
     threshold = args.threshold
     output_path = Path(args.output) if args.output else None
     
-    sleep_path = Path(args.sleep)
-    workouts_path = Path(args.workouts)
-    user_tz = args.timezone
-    threshold = args.threshold
-    output_path = Path(args.output) if args.output else None
-
     # 1) Load raw JSON
     sleep_raw = load_json_file(sleep_path, "sleep")
     workouts_raw = load_json_file(workouts_path, "workouts")
