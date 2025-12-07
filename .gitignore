@@ -1,0 +1,29 @@
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# VSCode settings
+.vscode/
+
+# OS stuff
+.DS_Store
+
+# Python build
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# JSON outputs (optional – only if they are generated artifacts)
+merged_daily.json
