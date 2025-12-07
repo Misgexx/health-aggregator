@@ -91,7 +91,7 @@ Run the program:
 |--------------|--------------------------------------------------------------|
 | `--sleep`    | Path to sleep JSON file                                      |
 | `--workouts`| Path to workouts JSON file                                    |
-| | `--timezone` | User’s timezone ([IANA](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) format) |
+| `--timezone` | User’s timezone ([IANA](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) format) |
 | `--threshold`| Sleep threshold in hours                                     |
 | `--output`   | Optional output JSON path                                    |
 
