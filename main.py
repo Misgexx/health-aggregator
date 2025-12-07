@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -113,6 +115,22 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
+    try:
+        ZoneInfo(args.timezone)
+    except ZoneInfoNotFoundError:
+        print(
+            f"Error: invalid timezone '{args.timezone}'. "
+            "Please use a valid IANA timezone like 'America/Los_Angeles'.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    sleep_path = Path(args.sleep)
+    workouts_path = Path(args.workouts)
+    user_tz = args.timezone
+    threshold = args.threshold
+    output_path = Path(args.output) if args.output else None
+    
     sleep_path = Path(args.sleep)
     workouts_path = Path(args.workouts)
     user_tz = args.timezone
@@ -142,8 +160,6 @@ def main() -> None:
 
     # 3) Build daily records
     daily_records = build_daily_records(sleep_events, workout_events)
-    for e in sleep_events:
-        print(e.start_local)
 
     # 4) Compute correlation
     corr = compute_sleep_calories_correlation(daily_records, threshold)

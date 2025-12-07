@@ -25,7 +25,9 @@ The tool solves this by:
 ### Timestamp Normalization
 
 - Sleep events include **start_time** and **end_time**, always in **UTC**.
-- Workout events include a single **local timestamp**; an artificial **1-hour duration** is added to define their end time.
+- Workout events include both `start_time` and `end_time` in local time.
+The tool parses these two timestamps in the user’s timezone, converts them to UTC, and uses the difference to compute workout duration. Each workout record also carries a `calories_burned` value.
+
 
 Each normalized event includes:
 
@@ -193,8 +195,15 @@ AI tools were used during early planning and experimentation:
 
 After reviewing how major health apps behave and considering how people interpret daily sleep, overnight sleep is attributed to the **wake-up day**. This avoids confusing splits across dates and aligns with how sleep impacts the following day.
 
-Copilot was used occasionally for in-editor suggestions and debugging assistance, but all logic decisions, timezone handling rules, and aggregation behaviors were designed and implemented manually.
+- Copilot was used occasionally for in-editor suggestions and debugging assistance, but all logic decisions, timezone handling rules, and aggregation behaviors were designed and implemented manually.
 
+
+- Codex was also used for targeted code review. It helped identify subtle issues such as:
+- The mismatch between documentation and actual workout input requirements (`start_time` + `end_time` vs. an assumed 1-hour duration),
+- Docstring inconsistencies in the sleep aggregation function,
+- The need for clearer user-facing errors when invalid timezone strings are supplied.
+
+These insights guided refinements, but all fixes and design choices were implemented and validated manually.
 ---
 
 ### Verification

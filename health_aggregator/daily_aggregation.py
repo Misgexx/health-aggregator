@@ -19,16 +19,20 @@ class DailyRecord:
 
 def _aggregate_sleep_by_day(sleep_events: List[SleepEvent]) -> Dict[date, float]:
     """
-    Split sleep across midnight correctly.
+    
+    Aggregate total sleep hours per local day.
 
-    Example:
-        10 PM → 4 AM (6 hours total)
-        Should all map to wake-up day, but split if needed.
+    Rule:
+      - Attribute the entire sleep session to the *wake-up day*
+        (the day of end_local in the user's local timezone).
+      - This includes sessions that cross midnight; they are not split
+        across multiple dates.
 
     Tests expect:
-    - Sleep spanning midnight still yields total hours = end - start
-    - Wake-up day = end_local.date()
+      - Sleep spanning midnight still yields total hours = end_local - start_local
+      - Wake-up day = end_local.date()
     """
+    
     result: Dict[date, float] = {}
 
     for e in sleep_events:
