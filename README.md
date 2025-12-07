@@ -76,8 +76,25 @@ Computed daily metrics include:
 All metrics operate on the finalized merged dataset for consistency.
 
 ---
+## 3. Installation
 
-## 3. CLI Usage
+Before running the CLI, create a virtual environment and install dependencies:
+
+```bash
+# Create a virtual environment (recommended)
+python -m venv .venv
+
+# Activate it
+# Windows:
+.\.venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+
+# Install required libraries
+python -m pip install -r requirements.txt
+
+---
+## 4. CLI Usage
 
 Run the program:
 
@@ -109,7 +126,7 @@ This ensures consistent test behavior, but users should supply their correct tim
 
 ---
 
-## 4. Approach & Technical Reasoning
+## 5. Approach & Technical Reasoning
 
 ### Parsing & Timezones
 
@@ -158,7 +175,7 @@ This architecture keeps logic clear, testable, and maintainable.
 
 ---
 
-## 5. Methodology
+## 6. Methodology
 
 ### Python Libraries Used
 
@@ -228,7 +245,7 @@ All tests pass successfully.
 
 ---
 
-## 6. Output Structure
+## 7. Output Structure
 
 When `--output` is provided, the generated JSON takes the form:
 
