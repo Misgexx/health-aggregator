@@ -220,6 +220,8 @@ After reviewing how major health apps behave and considering how people interpre
 - Docstring inconsistencies in the sleep aggregation function,
 - The need for clearer user-facing errors when invalid timezone strings are supplied.
 
+-  CodeRabbit was also used to assist with reviewing file changes in pull requests.
+
 These insights guided refinements, but all fixes and design choices were implemented and validated manually.
 ---
 
