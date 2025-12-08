@@ -92,7 +92,7 @@ source .venv/bin/activate
 
 # Install required libraries
 python -m pip install -r requirements.txt
-
+```
 ---
 ## 4. CLI Usage
 
