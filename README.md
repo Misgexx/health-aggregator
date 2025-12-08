@@ -97,12 +97,10 @@ python -m pip install -r requirements.txt
 ## 4. CLI Usage
 
 Run the program:
+```bash
+    python main.py --sleep sample_data/sleep.json --workouts sample_data/workouts.json --timezone "America/Los_Angeles" --output merged_daily.json
+```
 
-    python main.py \
-      --sleep sample_data/sleep.json \
-      --workouts sample_data/workouts.json \
-      --timezone "America/Los_Angeles" \
-      --output merged_daily.json
 
 ### Arguments
 
